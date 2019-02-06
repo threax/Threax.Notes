@@ -1,4 +1,8 @@
 /*Based on Cobalt*/
+.CodeMirror {
+    height:auto !important;
+}
+
 .cm-s-threax-notes.CodeMirror {
     background: #222;
     color: white;
