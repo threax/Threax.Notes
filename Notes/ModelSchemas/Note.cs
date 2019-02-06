@@ -10,6 +10,7 @@ namespace Notes.ModelSchemas
     [RequireAuthorization(typeof(Roles), nameof(Roles.EditNotes))]
     public abstract class Note
     {
+        [TextAreaUiType]
         public String Text { get; set; }
     }
 }

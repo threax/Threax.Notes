@@ -14,6 +14,7 @@ namespace Notes.InputModels
     [HalModel]
     public partial class NoteInput : INote
     {
+        [TextAreaUiType()]
         public String Text { get; set; }
 
     }

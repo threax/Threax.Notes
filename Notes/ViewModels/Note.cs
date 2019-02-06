@@ -21,6 +21,7 @@ namespace Notes.ViewModels
     {
         public Guid NoteId { get; set; }
 
+        [TextAreaUiType()]
         public String Text { get; set; }
 
         [UiOrder(0, 2147483646)]
