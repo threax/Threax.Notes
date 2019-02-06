@@ -16,7 +16,7 @@ namespace Notes
         /// <summary>
         /// A default role to edit values, you will probably want to replace this role.
         /// </summary>
-        public const String EditValues = "EditValues";
+        public const String EditNotes = nameof(EditNotes);
 
         /// <summary>
         /// All roles, any roles added above that you want to add to the database should be defined here.
@@ -24,7 +24,7 @@ namespace Notes
         /// <returns></returns>
         public static IEnumerable<String> DatabaseRoles()
         {
-            yield return EditValues;
+            yield return EditNotes;
         }
     }
 

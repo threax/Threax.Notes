@@ -7,7 +7,7 @@ using Threax.AspNetCore.Models;
 
 namespace Notes.ModelSchemas
 {
-    [RequireAuthorization(typeof(Roles), nameof(Roles.EditValues))]
+    [RequireAuthorization(typeof(Roles), nameof(Roles.EditNotes))]
     public abstract class Note
     {
         public String Text { get; set; }

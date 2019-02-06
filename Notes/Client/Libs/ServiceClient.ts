@@ -284,78 +284,78 @@ export class EntryPointResult {
         return this.client.HasLinkDoc("ListAppUsers");
     }
 
-    public listValues(data: ValueQuery): Promise<ValueCollectionResult> {
-        return this.client.LoadLinkWithData("ListValues", data)
+    public listNotes(data: NoteQuery): Promise<NoteCollectionResult> {
+        return this.client.LoadLinkWithData("ListNotes", data)
                .then(r => {
-                    return new ValueCollectionResult(r);
+                    return new NoteCollectionResult(r);
                 });
 
     }
 
-    public canListValues(): boolean {
-        return this.client.HasLink("ListValues");
+    public canListNotes(): boolean {
+        return this.client.HasLink("ListNotes");
     }
 
-    public linkForListValues(): hal.HalLink {
-        return this.client.GetLink("ListValues");
+    public linkForListNotes(): hal.HalLink {
+        return this.client.GetLink("ListNotes");
     }
 
-    public getListValuesDocs(query?: HalEndpointDocQuery): Promise<hal.HalEndpointDoc> {
-        return this.client.LoadLinkDoc("ListValues", query)
+    public getListNotesDocs(query?: HalEndpointDocQuery): Promise<hal.HalEndpointDoc> {
+        return this.client.LoadLinkDoc("ListNotes", query)
             .then(r => {
                 return r.GetData<hal.HalEndpointDoc>();
             });
     }
 
-    public hasListValuesDocs(): boolean {
-        return this.client.HasLinkDoc("ListValues");
+    public hasListNotesDocs(): boolean {
+        return this.client.HasLinkDoc("ListNotes");
     }
 
-    public addValue(data: ValueInput): Promise<ValueResult> {
-        return this.client.LoadLinkWithData("AddValue", data)
+    public addNote(data: NoteInput): Promise<NoteResult> {
+        return this.client.LoadLinkWithData("AddNote", data)
                .then(r => {
-                    return new ValueResult(r);
+                    return new NoteResult(r);
                 });
 
     }
 
-    public canAddValue(): boolean {
-        return this.client.HasLink("AddValue");
+    public canAddNote(): boolean {
+        return this.client.HasLink("AddNote");
     }
 
-    public linkForAddValue(): hal.HalLink {
-        return this.client.GetLink("AddValue");
+    public linkForAddNote(): hal.HalLink {
+        return this.client.GetLink("AddNote");
     }
 
-    public getAddValueDocs(query?: HalEndpointDocQuery): Promise<hal.HalEndpointDoc> {
-        return this.client.LoadLinkDoc("AddValue", query)
+    public getAddNoteDocs(query?: HalEndpointDocQuery): Promise<hal.HalEndpointDoc> {
+        return this.client.LoadLinkDoc("AddNote", query)
             .then(r => {
                 return r.GetData<hal.HalEndpointDoc>();
             });
     }
 
-    public hasAddValueDocs(): boolean {
-        return this.client.HasLinkDoc("AddValue");
+    public hasAddNoteDocs(): boolean {
+        return this.client.HasLinkDoc("AddNote");
     }
 }
 
-export class ValueResult {
+export class NoteResult {
     private client: hal.HalEndpointClient;
 
     constructor(client: hal.HalEndpointClient) {
         this.client = client;
     }
 
-    private strongData: Value = undefined;
-    public get data(): Value {
-        this.strongData = this.strongData || this.client.GetData<Value>();
+    private strongData: Note = undefined;
+    public get data(): Note {
+        this.strongData = this.strongData || this.client.GetData<Note>();
         return this.strongData;
     }
 
-    public refresh(): Promise<ValueResult> {
+    public refresh(): Promise<NoteResult> {
         return this.client.LoadLink("self")
                .then(r => {
-                    return new ValueResult(r);
+                    return new NoteResult(r);
                 });
 
     }
@@ -379,10 +379,10 @@ export class ValueResult {
         return this.client.HasLinkDoc("self");
     }
 
-    public update(data: ValueInput): Promise<ValueResult> {
+    public update(data: NoteInput): Promise<NoteResult> {
         return this.client.LoadLinkWithData("Update", data)
                .then(r => {
-                    return new ValueResult(r);
+                    return new NoteResult(r);
                 });
 
     }
@@ -419,36 +419,36 @@ export class ValueResult {
     }
 }
 
-export class ValueCollectionResult {
+export class NoteCollectionResult {
     private client: hal.HalEndpointClient;
 
     constructor(client: hal.HalEndpointClient) {
         this.client = client;
     }
 
-    private strongData: ValueCollection = undefined;
-    public get data(): ValueCollection {
-        this.strongData = this.strongData || this.client.GetData<ValueCollection>();
+    private strongData: NoteCollection = undefined;
+    public get data(): NoteCollection {
+        this.strongData = this.strongData || this.client.GetData<NoteCollection>();
         return this.strongData;
     }
 
-    private itemsStrong: ValueResult[];
-    public get items(): ValueResult[] {
+    private itemsStrong: NoteResult[];
+    public get items(): NoteResult[] {
         if (this.itemsStrong === undefined) {
             var embeds = this.client.GetEmbed("values");
             var clients = embeds.GetAllClients();
             this.itemsStrong = [];
             for (var i = 0; i < clients.length; ++i) {
-                this.itemsStrong.push(new ValueResult(clients[i]));
+                this.itemsStrong.push(new NoteResult(clients[i]));
             }
         }
         return this.itemsStrong;
     }
 
-    public refresh(): Promise<ValueCollectionResult> {
+    public refresh(): Promise<NoteCollectionResult> {
         return this.client.LoadLink("self")
                .then(r => {
-                    return new ValueCollectionResult(r);
+                    return new NoteCollectionResult(r);
                 });
 
     }
@@ -505,10 +505,10 @@ export class ValueCollectionResult {
         return this.client.HasLinkDoc("Update");
     }
 
-    public add(data: ValueInput): Promise<ValueResult> {
+    public add(data: NoteInput): Promise<NoteResult> {
         return this.client.LoadLinkWithData("Add", data)
                .then(r => {
-                    return new ValueResult(r);
+                    return new NoteResult(r);
                 });
 
     }
@@ -532,10 +532,10 @@ export class ValueCollectionResult {
         return this.client.HasLinkDoc("Add");
     }
 
-    public next(): Promise<ValueCollectionResult> {
+    public next(): Promise<NoteCollectionResult> {
         return this.client.LoadLink("next")
                .then(r => {
-                    return new ValueCollectionResult(r);
+                    return new NoteCollectionResult(r);
                 });
 
     }
@@ -559,10 +559,10 @@ export class ValueCollectionResult {
         return this.client.HasLinkDoc("next");
     }
 
-    public previous(): Promise<ValueCollectionResult> {
+    public previous(): Promise<NoteCollectionResult> {
         return this.client.LoadLink("previous")
                .then(r => {
-                    return new ValueCollectionResult(r);
+                    return new NoteCollectionResult(r);
                 });
 
     }
@@ -586,10 +586,10 @@ export class ValueCollectionResult {
         return this.client.HasLinkDoc("previous");
     }
 
-    public first(): Promise<ValueCollectionResult> {
+    public first(): Promise<NoteCollectionResult> {
         return this.client.LoadLink("first")
                .then(r => {
-                    return new ValueCollectionResult(r);
+                    return new NoteCollectionResult(r);
                 });
 
     }
@@ -613,10 +613,10 @@ export class ValueCollectionResult {
         return this.client.HasLinkDoc("first");
     }
 
-    public last(): Promise<ValueCollectionResult> {
+    public last(): Promise<NoteCollectionResult> {
         return this.client.LoadLink("last")
                .then(r => {
-                    return new ValueCollectionResult(r);
+                    return new NoteCollectionResult(r);
                 });
 
     }
@@ -1145,32 +1145,32 @@ export interface UserSearchCollection {
     limit?: number;
 }
 
-export interface ValueQuery {
-    /** Lookup a value by id. */
-    valueId?: string;
+export interface NoteQuery {
+    /** Lookup a note by id. */
+    noteId?: string;
     /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
     /** The limit of the number of items to return. */
     limit?: number;
 }
 
-export interface ValueCollection {
+export interface NoteCollection {
     /** The number of pages (item number = Offset * Limit) into the collection to query. */
     offset?: number;
-    /** Lookup a value by id. */
-    valueId?: string;
+    /** Lookup a note by id. */
+    noteId?: string;
     total?: number;
     /** The limit of the number of items to return. */
     limit?: number;
 }
 
-export interface ValueInput {
-    name: string;
+export interface NoteInput {
+    text?: string;
 }
 
-export interface Value {
-    valueId?: string;
-    name?: string;
+export interface Note {
+    noteId?: string;
+    text?: string;
     created?: string;
     modified?: string;
 }
