@@ -1,0 +1,21 @@
+[
+  {
+    "typescript": {
+      "compile": true
+    }
+  },
+  {
+    "pathBase": "Client",
+    "outDir": ".",
+    "copy": [
+      "Client/Images/*"
+    ]
+  },
+  {
+    "pathBase": "node_modules",
+    "outDir": "./lib",
+    "copy": [
+      "node_modules/codemirror/lib/*"
+    ]
+  }
+]
