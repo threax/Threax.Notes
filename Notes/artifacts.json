@@ -12,6 +12,13 @@
     ]
   },
   {
+    "pathBase": "Client/Codemirror",
+    "outDir": "./lib/codemirror/theme",
+    "copy": [
+      "Client/Codemirror/*"
+    ]
+  },
+  {
     "pathBase": "node_modules",
     "outDir": "./lib",
     "copy": [
