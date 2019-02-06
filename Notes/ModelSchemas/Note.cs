@@ -8,10 +8,8 @@ using Threax.AspNetCore.Models;
 namespace Notes.ModelSchemas
 {
     [RequireAuthorization(typeof(Roles), nameof(Roles.EditValues))]
-    public abstract class Value
+    public abstract class Note
     {
-        [Required]
-        [MaxLength(450)]
-        public String Name { get; set; }
+        public String Text { get; set; }
     }
 }
