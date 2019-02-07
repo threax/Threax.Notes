@@ -21,8 +21,8 @@ export class NoteCrudInjector extends hyperCrud.AbstractHypermediaPageInjector {
         return entry.canListNotes();
     }
 
-    public getDeletePrompt(item: client.NoteResult): string {
-        return "Are you sure you want to delete the note?";
+    public getDeletePrompt(item: client.NoteListingResult): string {
+        return "Delete " + item.data.firstLine + "?";
     }
 
     public getItemId(item: client.NoteResult): string | null {
