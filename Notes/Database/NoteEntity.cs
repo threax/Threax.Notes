@@ -18,6 +18,8 @@ namespace Notes.Database
 
         public String Text { get; set; }
 
+        public String FirstLine { get; set; }
+
         public DateTime Created { get; set; }
 
         public DateTime Modified { get; set; }

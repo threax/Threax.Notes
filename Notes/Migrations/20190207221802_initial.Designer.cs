@@ -9,7 +9,7 @@ using Notes.Database;
 namespace Notes.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190206223726_initial")]
+    [Migration("20190207221802_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,8 @@ namespace Notes.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Created");
+
+                    b.Property<string>("FirstLine");
 
                     b.Property<DateTime>("Modified");
 

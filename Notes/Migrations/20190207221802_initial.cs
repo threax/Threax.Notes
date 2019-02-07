@@ -13,6 +13,7 @@ namespace Notes.Migrations
                 {
                     NoteId = table.Column<Guid>(nullable: false),
                     Text = table.Column<string>(nullable: true),
+                    FirstLine = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
                     Modified = table.Column<DateTime>(nullable: false)
                 },

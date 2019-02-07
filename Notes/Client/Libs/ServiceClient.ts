@@ -432,14 +432,14 @@ export class NoteCollectionResult {
         return this.strongData;
     }
 
-    private itemsStrong: NoteResult[];
-    public get items(): NoteResult[] {
+    private itemsStrong: NoteEntryResult[];
+    public get items(): NoteEntryResult[] {
         if (this.itemsStrong === undefined) {
             var embeds = this.client.GetEmbed("values");
             var clients = embeds.GetAllClients();
             this.itemsStrong = [];
             for (var i = 0; i < clients.length; ++i) {
-                this.itemsStrong.push(new NoteResult(clients[i]));
+                this.itemsStrong.push(new NoteEntryResult(clients[i]));
             }
         }
         return this.itemsStrong;
@@ -638,6 +638,86 @@ export class NoteCollectionResult {
 
     public hasLastDocs(): boolean {
         return this.client.HasLinkDoc("last");
+    }
+}
+
+export class NoteEntryResult {
+    private client: hal.HalEndpointClient;
+
+    constructor(client: hal.HalEndpointClient) {
+        this.client = client;
+    }
+
+    private strongData: NoteEntry = undefined;
+    public get data(): NoteEntry {
+        this.strongData = this.strongData || this.client.GetData<NoteEntry>();
+        return this.strongData;
+    }
+
+    public refresh(): Promise<NoteResult> {
+        return this.client.LoadLink("self")
+               .then(r => {
+                    return new NoteResult(r);
+                });
+
+    }
+
+    public canRefresh(): boolean {
+        return this.client.HasLink("self");
+    }
+
+    public linkForRefresh(): hal.HalLink {
+        return this.client.GetLink("self");
+    }
+
+    public getRefreshDocs(query?: HalEndpointDocQuery): Promise<hal.HalEndpointDoc> {
+        return this.client.LoadLinkDoc("self", query)
+            .then(r => {
+                return r.GetData<hal.HalEndpointDoc>();
+            });
+    }
+
+    public hasRefreshDocs(): boolean {
+        return this.client.HasLinkDoc("self");
+    }
+
+    public update(data: NoteInput): Promise<NoteResult> {
+        return this.client.LoadLinkWithData("Update", data)
+               .then(r => {
+                    return new NoteResult(r);
+                });
+
+    }
+
+    public canUpdate(): boolean {
+        return this.client.HasLink("Update");
+    }
+
+    public linkForUpdate(): hal.HalLink {
+        return this.client.GetLink("Update");
+    }
+
+    public getUpdateDocs(query?: HalEndpointDocQuery): Promise<hal.HalEndpointDoc> {
+        return this.client.LoadLinkDoc("Update", query)
+            .then(r => {
+                return r.GetData<hal.HalEndpointDoc>();
+            });
+    }
+
+    public hasUpdateDocs(): boolean {
+        return this.client.HasLinkDoc("Update");
+    }
+
+    public delete(): Promise<void> {
+        return this.client.LoadLink("Delete").then(hal.makeVoid);
+    }
+
+    public canDelete(): boolean {
+        return this.client.HasLink("Delete");
+    }
+
+    public linkForDelete(): hal.HalLink {
+        return this.client.GetLink("Delete");
     }
 }
 
@@ -1171,6 +1251,13 @@ export interface NoteInput {
 export interface Note {
     noteId?: string;
     text?: string;
+    created?: string;
+    modified?: string;
+}
+
+export interface NoteEntry {
+    noteId?: string;
+    firstLine?: string;
     created?: string;
     modified?: string;
 }

@@ -23,6 +23,8 @@ namespace Notes.Migrations
 
                     b.Property<DateTime>("Created");
 
+                    b.Property<string>("FirstLine");
+
                     b.Property<DateTime>("Modified");
 
                     b.Property<string>("Text");

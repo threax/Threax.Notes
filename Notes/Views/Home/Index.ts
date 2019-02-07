@@ -25,7 +25,8 @@ class CodeMirrorEditor {
     private async setup(): Promise<void> {
         var entry = await this.injector.load();
         var notes = await entry.listNotes({});
-        this.note = notes.items[0];
+        var noteListing = notes.items[0];
+        this.note = await noteListing.refresh();
 
         this.codeMirror = CodeMirror(this.handle, {
             mode: "markdown",
