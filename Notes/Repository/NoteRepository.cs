@@ -31,9 +31,9 @@ namespace Notes.Repository
 
             var total = await dbQuery.CountAsync();
             dbQuery = dbQuery.Skip(query.SkipTo(total)).Take(query.Limit);
-            var results = await dbQuery.ToListAsync();
+            var results = await mapper.MapNote(dbQuery).ToListAsync();
 
-            return new NoteCollection(query, total, results.Select(i => mapper.MapNote(i, new NoteEntry())));
+            return new NoteCollection(query, total, results);
         }
 
         public async Task<Note> Get(Guid noteId)

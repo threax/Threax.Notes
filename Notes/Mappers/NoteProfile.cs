@@ -7,6 +7,7 @@ using Threax.AspNetCore.Tracking;
 using Notes.InputModels;
 using Notes.Database;
 using Notes.ViewModels;
+using System.Linq;
 
 namespace Notes.Mappers
 {
@@ -17,9 +18,15 @@ namespace Notes.Mappers
             return mapper.Map(src, dest);
         }
 
-        public NoteEntry MapNote(NoteEntity src, NoteEntry dest)
+        public IQueryable<NoteListing> MapNote(IQueryable<NoteEntity> src)
         {
-            return mapper.Map(src, dest);
+            return src.Select(i => new NoteListing()
+            {
+                NoteId = i.NoteId,
+                FirstLine = i.FirstLine,
+                Created = i.Created,
+                Modified = i.Modified,
+            });
         }
 
         public Note MapNote(NoteEntity src, Note dest)
@@ -47,8 +54,6 @@ namespace Notes.Mappers
 
             //Map the entity to the view model.
             MapEntityToView(CreateMap<NoteEntity, Note>());
-
-            CreateMap<NoteEntity, NoteEntry>();
         }
 
         void MapInputToEntity(IMappingExpression<NoteInput, NoteEntity> mapExpr)

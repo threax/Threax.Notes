@@ -20,9 +20,9 @@ namespace Notes.ViewModels
     [DeclareHalLink(typeof(NotesController), nameof(NotesController.List), PagedCollectionView<Object>.Rels.Previous, ResponseOnly = true)]
     [DeclareHalLink(typeof(NotesController), nameof(NotesController.List), PagedCollectionView<Object>.Rels.First, ResponseOnly = true)]
     [DeclareHalLink(typeof(NotesController), nameof(NotesController.List), PagedCollectionView<Object>.Rels.Last, ResponseOnly = true)]
-    public partial class NoteCollection : PagedCollectionViewWithQuery<NoteEntry, NoteQuery>
+    public partial class NoteCollection : PagedCollectionViewWithQuery<NoteListing, NoteQuery>
     {
-        public NoteCollection(NoteQuery query, int total, IEnumerable<NoteEntry> items) : base(query, total, items)
+        public NoteCollection(NoteQuery query, int total, IEnumerable<NoteListing> items) : base(query, total, items)
         {
             
         }

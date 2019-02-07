@@ -17,7 +17,7 @@ namespace Notes.ViewModels
     [HalSelfActionLink(typeof(NotesController), nameof(NotesController.Get))]
     [HalActionLink(typeof(NotesController), nameof(NotesController.Update))]
     [HalActionLink(typeof(NotesController), nameof(NotesController.Delete))]
-    public partial class NoteEntry : INoteId, ICreatedModified
+    public partial class NoteListing : INoteId, ICreatedModified
     {
         public Guid NoteId { get; set; }
 
