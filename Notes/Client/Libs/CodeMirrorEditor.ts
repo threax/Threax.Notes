@@ -5,7 +5,7 @@ import { TimedTrigger } from 'hr.timedtrigger';
 declare function CodeMirror(element, config);
 
 export function addServices(services: controller.ServiceCollection) {
-    services.addTransient(CodeMirrorEditor, CodeMirrorEditor);
+    services.addShared(CodeMirrorEditor, CodeMirrorEditor);
 }
 
 export function createStandard(builder: controller.InjectedControllerBuilder) {
@@ -21,6 +21,7 @@ export class CodeMirrorEditor {
     private handle: HTMLElement;
     private trigger: TimedTrigger<any>;
     private note: client.NoteResult;
+    private ignoreSave: boolean = false;
 
     public constructor(bindings: controller.BindingCollection, private injector: client.EntryPointInjector) {
         this.handle = bindings.getHandle("codemirror");
@@ -52,9 +53,18 @@ export class CodeMirrorEditor {
         this.trigger.addListener(a => this.save());
     }
 
+    public async changeNote(note: client.NoteResult): Promise<void> {
+        this.note = note;
+        this.codeMirror.setValue(note.data.text);
+        this.ignoreSave = true;
+    }
+
     private async save(): Promise<void> {
-        this.note = await this.note.update({
-            text: this.codeMirror.getValue()
-        });
+        if (!this.ignoreSave) {
+            this.note = await this.note.update({
+                text: this.codeMirror.getValue()
+            });
+        }
+        this.ignoreSave = false;
     }
 }

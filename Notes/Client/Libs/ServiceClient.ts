@@ -432,14 +432,14 @@ export class NoteCollectionResult {
         return this.strongData;
     }
 
-    private itemsStrong: NoteEntryResult[];
-    public get items(): NoteEntryResult[] {
+    private itemsStrong: NoteListingResult[];
+    public get items(): NoteListingResult[] {
         if (this.itemsStrong === undefined) {
             var embeds = this.client.GetEmbed("values");
             var clients = embeds.GetAllClients();
             this.itemsStrong = [];
             for (var i = 0; i < clients.length; ++i) {
-                this.itemsStrong.push(new NoteEntryResult(clients[i]));
+                this.itemsStrong.push(new NoteListingResult(clients[i]));
             }
         }
         return this.itemsStrong;
@@ -641,16 +641,16 @@ export class NoteCollectionResult {
     }
 }
 
-export class NoteEntryResult {
+export class NoteListingResult {
     private client: hal.HalEndpointClient;
 
     constructor(client: hal.HalEndpointClient) {
         this.client = client;
     }
 
-    private strongData: NoteEntry = undefined;
-    public get data(): NoteEntry {
-        this.strongData = this.strongData || this.client.GetData<NoteEntry>();
+    private strongData: NoteListing = undefined;
+    public get data(): NoteListing {
+        this.strongData = this.strongData || this.client.GetData<NoteListing>();
         return this.strongData;
     }
 
@@ -1255,7 +1255,7 @@ export interface Note {
     modified?: string;
 }
 
-export interface NoteEntry {
+export interface NoteListing {
     noteId?: string;
     firstLine?: string;
     created?: string;
