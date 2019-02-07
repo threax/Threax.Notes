@@ -54,7 +54,7 @@
     "node_modules\\htmlrapier.relogin\\src\\**\\*.ts",
     "node_modules\\htmlrapier.roleclient\\src\\**\\*.ts",
     "node_modules\\htmlrapier.widgets\\src\\**\\*.ts",
-    "node_modules\\htmlrapier\\src\\**\\*.ts", "ModelSchemas/Note.cs"
+    "node_modules\\htmlrapier\\src\\**\\*.ts"
   ],
   "exclude": [],
   "files": [
