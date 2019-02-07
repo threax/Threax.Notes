@@ -35,6 +35,7 @@ namespace Notes.InputModels
             else
             {
                 //Customize query further
+                query = query.OrderByDescending(i => i.Modified);
             }
 
             return Task.FromResult(query);
