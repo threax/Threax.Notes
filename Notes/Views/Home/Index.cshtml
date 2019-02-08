@@ -3,7 +3,7 @@
 }
 
 <div class="row">
-    <div data-hr-controller="mainTable" class="col-md-4">
+    <div data-hr-controller="mainTable" class="col-md-4 startHidden" data-hr-toggle="noteList" data-hr-style-on="display:block;">
         <load visible="true">
             <p>Working...</p>
         </load>
@@ -13,10 +13,10 @@
                     <template>
                         <div class="container">
                             <div class="row">
-                                <a data-hr-on-click="editOnPage" href="#" class="list-group-item list-group-item-action active col-sm-9">
+                                <a data-hr-on-click="editOnPage" href="#" class="list-group-item list-group-item-action active col-9">
                                     <div data-hr-view="firstLineView">{{{this}}}</div>
                                 </a>
-                                <button data-hr-on-click="del" class="btn btn-default col-sm-3" style="overflow:visible;" data-hr-toggle="del" data-hr-style-off="display:none;">Delete</button>
+                                <button data-hr-on-click="del" class="btn btn-default col-3" style="overflow:visible;" data-hr-toggle="del" data-hr-style-off="display:none;">Delete</button>
                             </div>
                         </div>
                     </template>

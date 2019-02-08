@@ -7,6 +7,7 @@ import * as crudpage from 'hr.widgets.CrudPage';
 
 import * as controller from "hr.controller";
 import * as client from 'clientlibs.ServiceClient';
+import * as events from 'hr.eventdispatcher';
 
 class RowExt extends crudpage.CrudTableRowControllerExtensions {
     public static get InjectorArgs(): controller.DiFunction<any>[] {
@@ -35,16 +36,25 @@ class RowExt extends crudpage.CrudTableRowControllerExtensions {
 
 class TableExt extends crudpage.CrudTableControllerExtensions {
     public static get InjectorArgs(): controller.DiFunction<any>[] {
-        return [codemirroreditor.CodeMirrorEditor, client.EntryPointInjector, crudpage.ICrudService];
+        return [codemirroreditor.CodeMirrorEditor, client.EntryPointInjector, crudpage.ICrudService, NotePageService];
     }
 
-    public constructor(private editor: codemirroreditor.CodeMirrorEditor, private injector: client.EntryPointInjector, private crudService: crudpage.ICrudService) {
+    private noteListToggle: controller.OnOffToggle;
+
+    public constructor(private editor: codemirroreditor.CodeMirrorEditor, private injector: client.EntryPointInjector, private crudService: crudpage.ICrudService, private notePageService: NotePageService) {
         super();
         this.editor.setFirstLineChangedListener(this);
+        this.notePageService.toggleNoteListEvent.add(() => {
+            if (this.noteListToggle.currentState === "off") {
+                this.crudService.refreshPage();
+            }
+            this.noteListToggle.toggle();
+        });
     }
 
     public setupBindings(bindings: controller.BindingCollection): void {
         bindings.setListener(this);
+        this.noteListToggle = bindings.getToggle("noteList");
     }
 
     public async addOnPage(evt: Event): Promise<void> {
@@ -55,7 +65,42 @@ class TableExt extends crudpage.CrudTableControllerExtensions {
     }
 
     public firstLineChanged(firstLine: string) {
-        this.crudService.refreshPage();
+        //this.crudService.refreshPage();
+    }
+}
+
+class NotePageService {
+    private toggleNoteListDispatcher = new events.ActionEventDispatcher<void>();
+
+    public get toggleNoteListEvent() {
+        return this.toggleNoteListDispatcher.modifier;
+    }
+
+    public fireToggleNoteList() {
+        this.toggleNoteListDispatcher.fire(undefined);
+    }
+
+    public static get InjectorArgs(): controller.DiFunction<any>[] {
+        return [];
+    }
+
+    public constructor() {
+
+    }
+}
+
+class HomeButton {
+    public static get InjectorArgs(): controller.DiFunction<any>[] {
+        return [controller.BindingCollection, NotePageService];
+    }
+
+    public constructor(bindings: controller.BindingCollection, private service: NotePageService) {
+        
+    }
+
+    public async clicked(evt: Event): Promise<void> {
+        evt.preventDefault();
+        this.service.fireToggleNoteList();
     }
 }
 
@@ -66,7 +111,10 @@ codemirroreditor.createStandard(builder);
 var injector = NoteCrudInjector;
 
 //deepLink.addServices(builder.Services);
+builder.Services.addTransient(HomeButton, HomeButton);
+builder.Services.addShared(NotePageService, NotePageService);
 builder.Services.addTransient(crudpage.CrudTableRowControllerExtensions, RowExt);
 builder.Services.addTransient(crudpage.CrudTableControllerExtensions, TableExt);
 standardCrudPage.addServices(builder, injector);
 standardCrudPage.createControllers(builder, new standardCrudPage.Settings());
+builder.create("homeButtonController", HomeButton);
