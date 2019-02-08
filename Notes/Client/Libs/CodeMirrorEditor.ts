@@ -12,6 +12,10 @@ export function createStandard(builder: controller.InjectedControllerBuilder) {
     builder.create("codemirror", CodeMirrorEditor);
 }
 
+export interface IFirstLineChangedListener {
+    firstLineChanged(firstLine: string);
+}
+
 export class CodeMirrorEditor {
     public static get InjectorArgs(): controller.DiFunction<any>[] {
         return [controller.BindingCollection, client.EntryPointInjector];
@@ -21,7 +25,9 @@ export class CodeMirrorEditor {
     private handle: HTMLElement;
     private trigger: TimedTrigger<any>;
     private note: client.NoteResult;
+    private firstLine: string;
     private ignoreSave: boolean = false;
+    private listener: IFirstLineChangedListener;
 
     public constructor(bindings: controller.BindingCollection, private injector: client.EntryPointInjector) {
         this.handle = bindings.getHandle("codemirror");
@@ -53,18 +59,39 @@ export class CodeMirrorEditor {
         this.trigger.addListener(a => this.save());
     }
 
-    public async changeNote(note: client.NoteResult): Promise<void> {
+    public changeNote(note: client.NoteResult) {
         this.note = note;
         this.codeMirror.setValue(note.data.text);
         this.ignoreSave = true;
+        this.firstLine = this.getFirstLine(note.data.text);
+    }
+
+    public setFirstLineChangedListener(listener: IFirstLineChangedListener) {
+        this.listener = listener;
     }
 
     private async save(): Promise<void> {
         if (!this.ignoreSave) {
+            var text = this.codeMirror.getValue(); 
             this.note = await this.note.update({
-                text: this.codeMirror.getValue()
+                text: text
             });
+            var firstLine = this.getFirstLine(text);
+            if (firstLine != this.firstLine) {
+                if (this.listener) {
+                    this.listener.firstLineChanged(text);
+                }
+                this.firstLine = firstLine;
+            }
         }
         this.ignoreSave = false;
+    }
+
+    public getFirstLine(text: string) {
+        var firstLineEnd = text.indexOf('\n');
+        if (firstLineEnd != -1) {
+            text = text.substr(0, firstLineEnd);
+        }
+        return text;
     }
 }

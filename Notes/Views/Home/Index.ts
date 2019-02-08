@@ -18,15 +18,44 @@ class RowExt extends crudpage.CrudTableRowControllerExtensions {
     }
 
     private data: client.NoteListingResult;
+    private firstLineView: controller.IView<any>;
 
     public rowConstructed(row: crudpage.CrudTableRowController, bindings: controller.BindingCollection, data: client.NoteListingResult): void {
         this.data = data;
         bindings.setListener(this);
+        this.firstLineView = bindings.getView("firstLineView");
+        this.firstLineView.setData(this.data.data.firstLine);
     }
 
     public async editOnPage(evt: Event): Promise<void> {
         var note = await this.data.refresh();
         this.editor.changeNote(note);
+    }
+}
+
+class TableExt extends crudpage.CrudTableControllerExtensions {
+    public static get InjectorArgs(): controller.DiFunction<any>[] {
+        return [codemirroreditor.CodeMirrorEditor, client.EntryPointInjector, crudpage.ICrudService];
+    }
+
+    public constructor(private editor: codemirroreditor.CodeMirrorEditor, private injector: client.EntryPointInjector, private crudService: crudpage.ICrudService) {
+        super();
+        this.editor.setFirstLineChangedListener(this);
+    }
+
+    public setupBindings(bindings: controller.BindingCollection): void {
+        bindings.setListener(this);
+    }
+
+    public async addOnPage(evt: Event): Promise<void> {
+        var entry = await this.injector.load();
+        var newNote = await entry.addNote({ text: "A New Note" });
+        this.editor.changeNote(newNote);
+        this.crudService.refreshPage();
+    }
+
+    public firstLineChanged(firstLine: string) {
+        this.crudService.refreshPage();
     }
 }
 
@@ -38,5 +67,6 @@ var injector = NoteCrudInjector;
 
 //deepLink.addServices(builder.Services);
 builder.Services.addTransient(crudpage.CrudTableRowControllerExtensions, RowExt);
+builder.Services.addTransient(crudpage.CrudTableControllerExtensions, TableExt);
 standardCrudPage.addServices(builder, injector);
 standardCrudPage.createControllers(builder, new standardCrudPage.Settings());
