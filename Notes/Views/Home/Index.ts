@@ -43,7 +43,6 @@ class TableExt extends crudpage.CrudTableControllerExtensions {
 
     public constructor(private editor: codemirroreditor.CodeMirrorEditor, private injector: client.EntryPointInjector, private crudService: crudpage.ICrudService, private notePageService: NotePageService) {
         super();
-        this.editor.setFirstLineChangedListener(this);
         this.notePageService.toggleNoteListEvent.add(() => {
             if (this.noteListToggle.currentState === "off") {
                 this.crudService.refreshPage();
@@ -62,10 +61,6 @@ class TableExt extends crudpage.CrudTableControllerExtensions {
         var newNote = await entry.addNote({ text: "A New Note" });
         this.editor.changeNote(newNote);
         this.crudService.refreshPage();
-    }
-
-    public firstLineChanged(firstLine: string) {
-        //this.crudService.refreshPage();
     }
 }
 
