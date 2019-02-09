@@ -43,10 +43,13 @@ namespace Notes.Mappers
             MapInputToEntity(CreateMap<NoteInput, NoteEntity>()
                 .ForMember(i => i.FirstLine, o => o.MapFrom((i, e) =>
                 {
-                    var firstLineIndex = i.Text.IndexOf('\n');
-                    if(firstLineIndex != -1)
+                    if (i.Text != null)
                     {
-                        return i.Text.Substring(0, firstLineIndex);
+                        var firstLineIndex = i.Text.IndexOf('\n');
+                        if (firstLineIndex != -1)
+                        {
+                            return i.Text.Substring(0, firstLineIndex);
+                        }
                     }
                     return i.Text;
                 }))

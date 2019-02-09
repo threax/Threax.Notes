@@ -30,6 +30,14 @@ namespace Notes.Repository
             var dbQuery = await query.Create(this.Entities);
 
             var total = await dbQuery.CountAsync();
+            if(total == 0)
+            {
+                await this.Add(new NoteInput()
+                {
+                    Text = "First Note\n\nThis is the first note."
+                });
+                total = await dbQuery.CountAsync();
+            }
             dbQuery = dbQuery.Skip(query.SkipTo(total)).Take(query.Limit);
             var results = await mapper.MapNote(dbQuery).ToListAsync();
 
