@@ -70,7 +70,7 @@ namespace Notes
                     {
                         config.AddJsonFileWithInclude(Path.GetFullPath("appsettings.secrets.json"), optional: false);
                     }
-                    else
+                    else if (!env.IsProduction())
                     {
                         config.AddUserSecrets<Program>();
                     }
