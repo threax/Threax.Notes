@@ -12,16 +12,7 @@ namespace Notes
         public static void Main(string[] args)
         {
             var tools = new ToolManager(args);
-            var toolsEnv = tools.GetEnvironment();
-            var toolsConfigName = default(String);
-            if (toolsEnv != null)
-            {
-                //If we are running tools, clear the arguments (this causes an error if the tool args are passed) and set the tools config to the environment name
-                args = new String[0];
-                toolsConfigName = toolsEnv;
-            }
-
-            var host = BuildWebHostWithConfig(args, toolsConfigName);
+            var host = BuildWebHostWithConfig(tools.GetCleanArgs(), tools.GetEnvironment());
 
             if (tools.ProcessTools(host))
             {
