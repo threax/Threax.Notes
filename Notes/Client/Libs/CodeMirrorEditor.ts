@@ -41,7 +41,8 @@ export class CodeMirrorEditor {
             theme: "threax-notes",
             lineNumbers: true,
             lineWrapping: true,
-            value: this.note.data.text
+            value: this.note.data.text,
+            inputStyle: "contenteditable"
         });
 
         var self = this;
