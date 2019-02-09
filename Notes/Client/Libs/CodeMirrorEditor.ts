@@ -42,7 +42,7 @@ export class CodeMirrorEditor {
             lineNumbers: true,
             lineWrapping: true,
             value: this.note.data.text,
-            inputStyle: "contenteditable"
+            inputStyle: "textarea"
         });
 
         var self = this;
