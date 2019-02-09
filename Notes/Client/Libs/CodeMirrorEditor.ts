@@ -41,8 +41,7 @@ export class CodeMirrorEditor {
             theme: "threax-notes",
             lineNumbers: true,
             lineWrapping: true,
-            value: this.note.data.text,
-            inputStyle: "textarea"
+            value: this.note.data.text
         });
 
         var self = this;
