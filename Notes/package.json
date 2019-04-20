@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "codemirror": "^5.43.0",
     "htmlrapier": "^19.0.0",
     "htmlrapier.bootstrap": "^7.0.0",
     "htmlrapier.bootstrap.datetime": "^3.1.0",
@@ -17,8 +18,7 @@
     "htmlrapier.roleclient": "^4.0.0",
     "htmlrapier.widgets": "^15.0.0",
     "jsns": "^5.0.0",
-    "threax.bootstrap4": "^0.0.1",
-    "codemirror": "^5.43.0"
+    "threax.bootstrap4": "^0.0.1"
   },
   "scripts": {
     "build": "threax-npm-tk build && dotnet bundle",
@@ -28,6 +28,5 @@
     "import-tsconfig": "threax-npm-tk tsconfig",
     "yarn-upgrade": "yarn upgrade --flat"
   },
-  "resolutions": {
-  }
+  "resolutions": {}
 }
