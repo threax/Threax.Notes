@@ -11,7 +11,7 @@
     "htmlrapier": "^19.0.0",
     "htmlrapier.bootstrap": "^7.0.0",
     "htmlrapier.bootstrap.datetime": "^3.1.0",
-    "htmlrapier.form.bootstrap4": "^1.0.0",
+    "htmlrapier.form.bootstrap4": "^2.0.0",
     "htmlrapier.halcyon": "^7.0.0",
     "htmlrapier.halcyon-explorer": "^8.0.0",
     "htmlrapier.relogin": "^1.0.4",
@@ -22,11 +22,9 @@
   },
   "scripts": {
     "build": "threax-npm-tk build && dotnet bundle",
-    "yarn-install": "yarn install --flat",
     "clean": "threax-npm-tk clean",
     "trash-modules": "threax-npm-tk clean -o node_modules",
-    "import-tsconfig": "threax-npm-tk tsconfig",
-    "yarn-upgrade": "yarn upgrade --flat"
+    "import-tsconfig": "threax-npm-tk tsconfig"
   },
   "resolutions": {}
 }
