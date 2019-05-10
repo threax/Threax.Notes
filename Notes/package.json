@@ -5,7 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.2.1",
     "codemirror": "^5.46.0",
-    "htmlrapier": "^19.0.0",
+    "htmlrapier": "^20.0.2",
     "htmlrapier.bootstrap": "^7.1.0",
     "htmlrapier.bootstrap.datetime": "^3.5.0",
     "htmlrapier.form.bootstrap4": "^2.1.0",
@@ -13,7 +13,7 @@
     "htmlrapier.halcyon-explorer": "^8.0.0",
     "htmlrapier.relogin": "^1.0.4",
     "htmlrapier.roleclient": "^4.0.0",
-    "htmlrapier.widgets": "^15.0.0",
+    "htmlrapier.widgets": "^15.9.0",
     "jsns": "^5.0.0",
     "threax.bootstrap4": "^0.0.1"
   },
