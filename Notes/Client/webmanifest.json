@@ -1,0 +1,16 @@
+{
+  "name": "Notes",
+  "short_name": "Notes",
+  "description": "Take Notes.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "500x500",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/AppStart",
+  "display": "standalone",
+  "theme_color": "#222222",
+  "background_color": "#222222"
+}
