@@ -22,6 +22,8 @@ using Threax.AspNetCore.IdServerAuth;
 using Threax.AspNetCore.UserBuilder;
 using Threax.AspNetCore.UserLookup.Mvc.Controllers;
 using Threax.Extensions.Configuration.SchemaBinder;
+using System.Threading.Tasks;
+using Threax.Sqlite.Ext.EfCore3;
 
 namespace Notes
 {
@@ -123,7 +125,7 @@ namespace Notes
                 o.UseExceptionErrorFilters();
                 o.UseConventionalHalcyon(halOptions);
             })
-            .AddJsonOptions(o =>
+            .AddNewtonsoftJson(o =>
             {
                 o.SerializerSettings.SetToHalcyonDefault();
                 o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -132,8 +134,7 @@ namespace Notes
             .AddThreaxUserLookup(o =>
             {
                 o.UseIdServer();
-            })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            });
 
             services.ConfigureHtmlRapierTagHelpers(o =>
             {
@@ -146,6 +147,7 @@ namespace Notes
                 .AddTool("migrate", new ToolCommand("Migrate database to newest version. Run anytime new migrations have been added.", async a =>
                 {
                     await a.Migrate();
+                    a.Scope.ServiceProvider.GetRequiredService<AppDbContext>().ConvertToEfCore3();
                 }))
                 .AddTool("seed", new ToolCommand("Seed database data. Only needed for an empty database.", async a =>
                 {
@@ -206,18 +208,20 @@ namespace Notes
 
             app.UseCorsManager(corsOptions, loggerFactory);
 
+            app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "root",
-                    template: "{action=Index}/{*inPagePath}",
+                    pattern: "{action=Index}/{*inPagePath}",
                     defaults: new { controller = "Home" });
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{*inPagePath}");
+                    pattern: "{controller=Home}/{action=Index}/{*inPagePath}");
             });
         }
     }
