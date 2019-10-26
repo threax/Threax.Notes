@@ -20,7 +20,6 @@
             <div class="nav-item" data-hr-controller="homeButtonController"><a class="navbar-brand" href="#" data-hr-on-click="clicked">List Notes</a></div>
             <div class="navbar-collapse collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Notes">Notes</a></li>
                     @if (User.IsInRole(Threax.AspNetCore.UserBuilder.Entities.AuthorizationAdminRoles.EditRoles))
                     {
                         <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Users">Edit Users</a></li>
