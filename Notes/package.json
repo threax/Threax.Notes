@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "codemirror": "^5.51.0",
+    "codemirror": "^5.53.2",
     "htmlrapier": "^20.0.2",
-    "htmlrapier.bootstrap": "^7.1.0",
+    "htmlrapier.bootstrap": "^7.2.0",
     "htmlrapier.bootstrap.datetime": "^3.5.0",
     "htmlrapier.form.bootstrap4": "^2.1.0",
     "htmlrapier.halcyon": "^7.0.0",
