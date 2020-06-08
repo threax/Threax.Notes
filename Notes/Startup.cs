@@ -51,6 +51,7 @@ namespace Notes
             Configuration.Bind("AppConfig", appConfig);
             Configuration.Bind("ClientConfig", clientConfig);
             Configuration.Bind("Cors", corsOptions);
+            Configuration.Define("K8sDeploy", typeof(Threax.K8sDeploy.Config.K8sDeployConfig));
         }
 
         public SchemaConfigurationBinder Configuration { get; }
