@@ -134,6 +134,7 @@ namespace Notes
                 o.SerializerSettings.SetToHalcyonDefault();
                 o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             })
+            .AddRazorRuntimeCompilation()
             .AddConventionalIdServerMvc()
             .AddThreaxUserLookup(o =>
             {

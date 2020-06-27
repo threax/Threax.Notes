@@ -18,7 +18,6 @@
       "wwwroot/lib/moment/min/moment.min.js",
       "wwwroot/lib/codemirror/lib/codemirror.js",
       "wwwroot/lib/codemirror/mode/markdown/markdown.js",
-      "wwwroot/lib/polyfill.js",
       "wwwroot/lib/tslib.js",
       "wwwroot/lib/tsbin.js"
     ],
