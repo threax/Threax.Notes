@@ -8,7 +8,10 @@
     "pathBase": "Client",
     "outDir": ".",
     "copy": [
-      "Client/Images/*"
+      "Client/Images/*",
+      "Client/webmanifest.json",
+      "Client/favicon.ico",
+      "Client/icon.png"
     ]
   },
   {
