@@ -12,6 +12,21 @@
     ]
   },
   {
+    "pathBase": "Client/Codemirror",
+    "outDir": "./lib/codemirror/theme",
+    "copy": [
+      "Client/Codemirror/*"
+    ]
+  },
+  {
+    "pathBase": "node_modules",
+    "outDir": "./lib",
+    "copy": [
+      "node_modules/codemirror/lib/*",
+      "node_modules/codemirror/mode/markdown/*"
+    ]
+  },
+  {
     "outDir": ".",
     "bundle": [
       {
@@ -32,6 +47,8 @@
           "wwwroot/lib/jquery/dist/jquery.min.js",
           "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
           "wwwroot/lib/moment/min/moment.min.js",
+          "wwwroot/lib/codemirror/lib/codemirror.js",
+          "wwwroot/lib/codemirror/mode/markdown/markdown.js",
           "wwwroot/lib/tslib.js",
           "wwwroot/lib/tsbin.js"
         ],
