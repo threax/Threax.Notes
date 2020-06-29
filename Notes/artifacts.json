@@ -8,25 +8,36 @@
     "pathBase": "Client",
     "outDir": ".",
     "copy": [
-      "Client/Images/*",
-      "Client/webmanifest.json",
-      "Client/favicon.ico",
-      "Client/icon.png"
+      "Client/Images/*"
     ]
   },
   {
-    "pathBase": "Client/Codemirror",
-    "outDir": "./lib/codemirror/theme",
-    "copy": [
-      "Client/Codemirror/*"
+    "outDir": ".",
+    "bundle": [
+      {
+        "input": [
+          "wwwroot/lib/bootstrap/dist/css/threax.bootstrap.css",
+          "wwwroot/lib/htmlrapier.bootstrap.datetime/css/bootstrap-datetimepicker.css"
+        ],
+        "out": "bundle.min.css",
+        "minify": true
+      }
     ]
   },
   {
-    "pathBase": "node_modules",
-    "outDir": "./lib",
-    "copy": [
-      "node_modules/codemirror/lib/*",
-      "node_modules/codemirror/mode/markdown/*"
+    "outDir": ".",
+    "bundle": [
+      {
+        "input": [
+          "wwwroot/lib/jquery/dist/jquery.min.js",
+          "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+          "wwwroot/lib/moment/min/moment.min.js",
+          "wwwroot/lib/tslib.js",
+          "wwwroot/lib/tsbin.js"
+        ],
+        "out": "bundle.min.js",
+        "minify": true
+      }
     ]
   }
 ]

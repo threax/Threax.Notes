@@ -38,7 +38,7 @@
     <PackageReference Include="Threax.AspNetCore.Halcyon.Ext" Version="14.0.0" />
     <PackageReference Include="Threax.AspNetCore.Halcyon.ClientGen" Version="12.1.0" />
     <PackageReference Include="Threax.Extensions.Configuration.SchemaBinder" Version="2.0.0" />
-    <PackageReference Include="HtmlRapier.TagHelpers" Version="8.0.0" />
+    <PackageReference Include="HtmlRapier.TagHelpers" Version="8.1.1" />
     <PackageReference Include="Threax.ReflectedServices" Version="1.0.0" />
     <PackageReference Include="Threax.Sqlite.Ext" Version="2.0.0" />
     <PackageReference Include="Threax.AspNetCore.UserLookup" Version="1.0.0" />
@@ -47,9 +47,6 @@
     <PackageReference Include="Threax.IdServer.Client" Version="3.0.2" GeneratePathProperty="true" />
     <PackageReference Include="Threax.DeployConfig" Version="1.0.0-pre01" GeneratePathProperty="true" />
     <PackageReference Include="IdentityModel" Version="4.3.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="3.2.435" />
   </ItemGroup>
 
   <Target Name="CopyDocs" AfterTargets="Build">
