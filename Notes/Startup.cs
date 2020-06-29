@@ -180,8 +180,8 @@ namespace Notes
                 o.AddManifest().AddSelf();
                 o.AddFont().AddSelf();
                 o.AddFrame().AddSelf().AddEntries(new String[] { authConfig.Authority });
-                o.AddScript().AddSelf().AddUnsafeInline();
-                o.AddStyle().AddSelf().AddUnsafeInline();
+                o.AddScript().AddSelf().AddNonce();
+                o.AddStyle().AddSelf().AddNonce();
                 o.AddFrameAncestors().AddSelf();
             });
 

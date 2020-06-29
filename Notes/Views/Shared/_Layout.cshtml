@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>html{visibility: hidden;opacity:0;background-color:#222;}</style>
+    <style csp-nonce>html{visibility: hidden;opacity:0;background-color:#222;}</style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Notes</title>
@@ -48,9 +48,9 @@
     <relogin></relogin>
 
     @* this line fills in the client config using the tag helper and what has been defined in the di *@
-    <client-config></client-config>
-    <token-config></token-config>
-    <style>html{visibility: visible;opacity: 1;}</style>
+    <client-config csp-nonce></client-config>
+    <token-config csp-nonce></token-config>
+    <style csp-nonce>html{visibility: visible;opacity: 1;}</style>
     <asset-bundle src="~/bundle.min.js"></asset-bundle>
     @RenderSection("scripts", required: false)
     <script type="text/javascript" src="~/lib/hr-run.js" asp-append-version="true"></script>

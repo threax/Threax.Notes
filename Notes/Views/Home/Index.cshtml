@@ -3,7 +3,7 @@
 }
 
 <div class="row">
-    <div data-hr-controller="mainTable" class="col-md-4 startHidden" data-hr-toggle="noteList" data-hr-style-on="display:block;">
+    <div data-hr-controller="mainTable" class="col-lg-4 startHidden" data-hr-toggle="noteList" data-hr-style-on="display:block;">
         <load visible="true">
             <p>Working...</p>
         </load>
@@ -16,7 +16,7 @@
                                 <a data-hr-on-click="editOnPage" href="#" class="list-group-item list-group-item-action active col-9">
                                     <div data-hr-view="firstLineView">{{{this}}}</div>
                                 </a>
-                                <button data-hr-on-click="del" class="btn btn-default col-3" style="overflow:visible;" data-hr-toggle="del" data-hr-style-off="display:none;">Delete</button>
+                                <button data-hr-on-click="del" class="btn btn-default col-3" data-hr-toggle="del" data-hr-style-off="display:none;">Delete</button>
                             </div>
                         </div>
                     </template>
@@ -31,7 +31,7 @@
             An error occured loading the notes. Please try again later.
         </error>
     </div>
-    <div class="col-md-8">
+    <div class="col-lg-8">
         <div data-hr-controller="codemirror" data-hr-handle="codemirror"></div>
     </div>
 </div>
