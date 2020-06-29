@@ -32,7 +32,9 @@
       {
         "input": [
           "wwwroot/lib/bootstrap/dist/css/threax.bootstrap.css",
-          "wwwroot/lib/htmlrapier.bootstrap.datetime/css/bootstrap-datetimepicker.css"
+          "wwwroot/lib/htmlrapier.bootstrap.datetime/css/bootstrap-datetimepicker.css",
+          "wwwroot/lib/codemirror/lib/codemirror.css",
+          "wwwroot/lib/codemirror/theme/threax-notes.css"
         ],
         "out": "bundle.min.css",
         "minify": true
