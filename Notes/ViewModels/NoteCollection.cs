@@ -11,6 +11,7 @@ using Threax.AspNetCore.Halcyon.Ext;
 namespace Notes.ViewModels
 {
     [HalModel]
+    [CacheEndpointDoc]
     [HalSelfActionLink(typeof(NotesController), nameof(NotesController.List))]
     [HalActionLink(typeof(NotesController), nameof(NotesController.Get), DocsOnly = true)] //This provides access to docs for showing items
     [HalActionLink(typeof(NotesController), nameof(NotesController.List), DocsOnly = true)] //This provides docs for searching the list

@@ -14,6 +14,7 @@ using Threax.AspNetCore.Halcyon.Ext.ValueProviders;
 namespace Notes.ViewModels 
 {
     [HalModel]
+    [CacheEndpointDoc]
     [HalSelfActionLink(typeof(NotesController), nameof(NotesController.Get))]
     [HalActionLink(typeof(NotesController), nameof(NotesController.Update))]
     [HalActionLink(typeof(NotesController), nameof(NotesController.Delete))]

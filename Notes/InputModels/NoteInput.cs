@@ -12,6 +12,7 @@ using Threax.AspNetCore.Halcyon.Ext.ValueProviders;
 namespace Notes.InputModels 
 {
     [HalModel]
+    [CacheEndpointDoc]
     public partial class NoteInput : INote
     {
         [TextAreaUiType()]

@@ -14,6 +14,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Notes.InputModels
 {
     [HalModel]
+    [CacheEndpointDoc]
     public partial class NoteQuery : PagedCollectionQuery, INoteQuery
     {
         /// <summary>

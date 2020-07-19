@@ -27,5 +27,11 @@ namespace Notes.Controllers
             await HttpContext.SignOutOfIdServer();
             return View();
         }
+
+        [HttpPost]
+        public IActionResult AccessToken()
+        {
+            return new EmptyResult();
+        }
     }
 }

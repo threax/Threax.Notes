@@ -52,6 +52,8 @@ namespace Notes
             Configuration.Bind("ClientConfig", clientConfig);
             Configuration.Bind("Cors", corsOptions);
             Configuration.Define("Deploy", typeof(Threax.DeployConfig.DeploymentConfig));
+
+            clientConfig.BearerCookieName = $"{authConfig.ClientId}.BearerToken";
         }
 
         public SchemaConfigurationBinder Configuration { get; }
@@ -92,6 +94,10 @@ namespace Notes
                 {
                     jwtOpt.Audience = "Threax.IdServer";
                 };
+                o.CustomizeCookies = cookOpt =>
+                {
+                    cookOpt.BearerHttpOnly = false;
+                };
             });
 
             services.AddAppDatabase(appConfig.ConnectionString);
@@ -101,7 +107,7 @@ namespace Notes
             var halOptions = new HalcyonConventionOptions()
             {
                 BaseUrl = appConfig.BaseUrl,
-                HalDocEndpointInfo = new HalDocEndpointInfo(typeof(EndpointDocController)),
+                HalDocEndpointInfo = new HalDocEndpointInfo(typeof(EndpointDocController), this.GetType().Assembly.ComputeMd5()),
                 EnableValueProviders = appConfig.EnableValueProviders
             };
 
