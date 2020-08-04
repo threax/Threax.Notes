@@ -81,5 +81,16 @@ namespace Notes
         /// initial setup. Default: true
         /// </summary>
         public bool EnableIdServerMetadata { get; set; } = true;
+
+        /// <summary>
+        /// Set this to a path to load for the KeyPerFile config. This can be null to load nothing.
+        /// If this is set the path is required.
+        /// </summary>
+        public string KeyPerFilePath { get; set; }
+
+        /// <summary>
+        /// Add the user secrets. Useful during development, otherwise disable.
+        /// </summary>
+        public bool AddUserSecrets { get; set; }
     }
 }
