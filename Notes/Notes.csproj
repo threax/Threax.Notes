@@ -51,11 +51,4 @@
     <PackageReference Include="IdentityModel" Version="4.3.1" />
   </ItemGroup>
 
-  <Target Name="CopyDocs" AfterTargets="Build">
-    <Copy SourceFiles="$(PkgThreax_AspNetCore_IdServerAuth)\lib\netstandard2.0\Threax.AspNetCore.IdServerAuth.xml" DestinationFolder="$(OutDir)" />
-    <Copy SourceFiles="$(PkgThreax_AspNetCore_CorsManager)\lib\netstandard2.0\Threax.AspNetCore.CorsManager.xml" DestinationFolder="$(OutDir)" />
-    <Copy SourceFiles="$(PkgThreax_AspNetCore_Halcyon_Client_OpenIdConnect)\lib\netstandard2.0\Threax.AspNetCore.Halcyon.Client.OpenIdConnect.xml" DestinationFolder="$(OutDir)" />
-    <Copy SourceFiles="$(PkgThreax_IdServer_Client)\lib\netstandard2.0\Threax.IdServer.Client.xml" DestinationFolder="$(OutDir)" />
-  </Target>
-
 </Project>
