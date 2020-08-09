@@ -57,12 +57,6 @@ namespace Notes
                         config.AddJsonFileWithInclude($"appsettings.{toolsConfigName}.json", optional: true);
                     }
 
-                    //Legacy to load local secrets file. Not reccomended, needs to be removed.
-                    if (File.Exists("appsettings.secrets.json"))
-                    {
-                        config.AddJsonFileWithInclude(Path.GetFullPath("appsettings.secrets.json"), optional: false);
-                    }
-
                     //Build the config so far and load the KeyPerFilePath.
                     var built = config.Build();
                     var keyPerFilePath = built.GetSection("AppConfig")?.GetValue<String>("KeyPerFilePath");
