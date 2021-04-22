@@ -97,10 +97,6 @@ namespace Notes
                 o.CookiePath = appConfig.PathBase;
                 o.AccessDeniedPath = "/Account/AccessDenied";
                 o.EnableIdServerMetadata = appConfig.EnableIdServerMetadata;
-                o.CustomizeCookies = cookOpt =>
-                {
-                    cookOpt.BearerHttpOnly = false;
-                };
             });
 
             services.AddAppDatabase(appConfig.ConnectionString);
