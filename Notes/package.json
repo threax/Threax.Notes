@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "codemirror": "^5.55.0",
+    "codemirror": "^5.58.2",
     "bootstrap": "^4.5.0",
     "htmlrapier": "^24.0.1",
     "htmlrapier.accesstoken": "^1.0.0",
