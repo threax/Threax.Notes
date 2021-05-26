@@ -6,7 +6,7 @@
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
-    <DefineConstants>HOST_LOCAL;DB_SQLSERVER</DefineConstants>
+    <DefineConstants>HOST_LOCAL;DB_SQLITE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
