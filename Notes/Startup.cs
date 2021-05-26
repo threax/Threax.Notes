@@ -99,7 +99,7 @@ namespace Notes
                 o.EnableIdServerMetadata = appConfig.EnableIdServerMetadata;
             });
 
-            services.AddAppDatabase(appConfig.ConnectionString);
+            services.AddAppDatabase(appConfig.ConnectionString, appConfig.DbSchema);
             services.AddAppMapper();
             services.AddAppRepositories();
 
@@ -161,7 +161,6 @@ namespace Notes
                 .AddTool("migrate", new ToolCommand("Migrate database to newest version. Run anytime new migrations have been added.", async a =>
                 {
                     await a.Migrate();
-                    a.Scope.ServiceProvider.GetRequiredService<AppDbContext>().ConvertToEfCore3();
                 }))
                 .AddTool("seed", new ToolCommand("Seed database data. Only needed for an empty database.", async a =>
                 {

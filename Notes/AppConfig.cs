@@ -92,5 +92,10 @@ namespace Notes
         /// Add the user secrets. Useful during development, otherwise disable.
         /// </summary>
         public bool AddUserSecrets { get; set; }
+
+        /// <summary>
+        /// Set the app db schema name.
+        /// </summary>
+        public string DbSchema { get; set; } = "dbo";
     }
 }

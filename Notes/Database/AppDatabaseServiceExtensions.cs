@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Threax.AspNetCore.BuiltInTools;
 using Threax.AspNetCore.Models;
 using Threax.AspNetCore.UserBuilder.Entities;
-using Threax.Sqlite.Ext;
 using Notes.Mappers;
 
 namespace Notes.Database
@@ -22,16 +21,15 @@ namespace Notes.Database
         /// <param name="services">The service collection.</param>
         /// <param name="connectionString">The connection string for the database.</param>
         /// <returns></returns>
-        public static IServiceCollection AddAppDatabase(this IServiceCollection services, string connectionString)
+        public static IServiceCollection AddAppDatabase(this IServiceCollection services, string connectionString, string schema)
         {
+            AppDbContext.SchemaName = schema;
+
             //Add the database
             services.AddAuthorizationDatabase<AppDbContext>()
                     .AddDbContextPool<AppDbContext>(o =>
                     {
-                        o.UseSqlite(connectionString, options =>
-                        {
-                            options.MigrationsAssembly(typeof(AppDbContext).GetTypeInfo().Assembly.GetName().Name);
-                        });
+                        o.UseConnectedDb(connectionString);
                     });
 
             return services;

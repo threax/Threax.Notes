@@ -6,14 +6,17 @@
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
+    <DefineConstants>HOST_LOCAL;DB_SQLITE</DefineConstants>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Notes.Db.Sqlite\Notes.Db.Sqlite.csproj" Condition="$(DefineConstants.Contains(DB_SQLITE))" />
+    <ProjectReference Include="..\Notes.Db\Notes.Db.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.6" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Threax.AspNetCore.CSP" Version="1.4.0" />
     <PackageReference Include="Threax.AspNetCore.Models" Version="7.1.0" />
@@ -36,7 +39,6 @@
     <PackageReference Include="Threax.Extensions.Configuration.SchemaBinder" Version="2.0.1" />
     <PackageReference Include="HtmlRapier.TagHelpers" Version="8.2.1" />
     <PackageReference Include="Threax.ReflectedServices" Version="1.0.1" />
-    <PackageReference Include="Threax.Sqlite.Ext" Version="2.0.1" />
     <PackageReference Include="Threax.AspNetCore.UserLookup" Version="2.0.0" />
     <PackageReference Include="Threax.AspNetCore.UserLookup.Mvc" Version="4.0.0" />
     <PackageReference Include="Threax.AspNetCore.UserLookup.IdServer" Version="3.0.0" />
@@ -45,10 +47,6 @@
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Threax.DeployConfig" Version="1.1.0" />
     <PackageReference Include="Threax.DockerBuildConfig" Version="1.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Notes.Db\Notes.Db.csproj" />
   </ItemGroup>
 
 </Project>
