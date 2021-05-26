@@ -13,6 +13,6 @@ namespace Notes.Database
         {
         }
 
-        //The dbset declarations are in the other parial classes. Expand the AppDbContext.cs class node to see them.
+        public DbSet<NoteEntity> Notes { get; set; }
     }
 }
