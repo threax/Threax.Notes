@@ -22,8 +22,6 @@ using Threax.AspNetCore.IdServerAuth;
 using Threax.AspNetCore.UserBuilder;
 using Threax.AspNetCore.UserLookup.Mvc.Controllers;
 using Threax.Extensions.Configuration.SchemaBinder;
-using System.Threading.Tasks;
-using Threax.Sqlite.Ext.EfCore3;
 
 namespace Notes
 {

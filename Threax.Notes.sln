@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Db", "Notes.Db\Notes.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Db.Sqlite", "Notes.Db.Sqlite\Notes.Db.Sqlite.csproj", "{B76E1E70-65EA-4340-9DDF-CCE90299E15F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.Db.SqlServer", "Notes.Db.SqlServer\Notes.Db.SqlServer.csproj", "{801A119D-54F3-4CBE-AC89-CA62F826A270}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B76E1E70-65EA-4340-9DDF-CCE90299E15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B76E1E70-65EA-4340-9DDF-CCE90299E15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B76E1E70-65EA-4340-9DDF-CCE90299E15F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{801A119D-54F3-4CBE-AC89-CA62F826A270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{801A119D-54F3-4CBE-AC89-CA62F826A270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{801A119D-54F3-4CBE-AC89-CA62F826A270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{801A119D-54F3-4CBE-AC89-CA62F826A270}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

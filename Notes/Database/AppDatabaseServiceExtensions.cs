@@ -20,6 +20,7 @@ namespace Notes.Database
         /// </summary>
         /// <param name="services">The service collection.</param>
         /// <param name="connectionString">The connection string for the database.</param>
+        /// <param name="schema">The schema to use for the db.</param>
         /// <returns></returns>
         public static IServiceCollection AddAppDatabase(this IServiceCollection services, string connectionString, string schema)
         {

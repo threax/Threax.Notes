@@ -6,11 +6,12 @@
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
-    <DefineConstants>HOST_LOCAL;DB_SQLITE</DefineConstants>
+    <DefineConstants>HOST_LOCAL;DB_SQLSERVER</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Notes.Db.Sqlite\Notes.Db.Sqlite.csproj" Condition="$(DefineConstants.Contains(DB_SQLITE))" />
+    <ProjectReference Include="..\Notes.Db.SqlServer\Notes.Db.SqlServer.csproj" Condition="$(DefineConstants.Contains(DB_SQLSERVER))" />
     <ProjectReference Include="..\Notes.Db\Notes.Db.csproj" />
   </ItemGroup>
 
