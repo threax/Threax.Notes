@@ -74,6 +74,8 @@ namespace Notes
                     //Environment variables
                     config.AddEnvironmentVariables();
                     config.AddCommandLine(args);
+
+                    config.UseConnectedConfig();
                 });
 
             return webHostBuilder.Build();

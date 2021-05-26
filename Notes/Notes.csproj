@@ -12,6 +12,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Notes.Db.Sqlite\Notes.Db.Sqlite.csproj" Condition="$(DefineConstants.Contains(DB_SQLITE))" />
     <ProjectReference Include="..\Notes.Db.SqlServer\Notes.Db.SqlServer.csproj" Condition="$(DefineConstants.Contains(DB_SQLSERVER))" />
+    <ProjectReference Include="..\Notes.Host.Local\Notes.Host.Local.csproj" Condition="$(DefineConstants.Contains(HOST_LOCAL))" />
+    <ProjectReference Include="..\Notes.Host.Azure\Notes.Host.Azure.csproj" Condition="$(DefineConstants.Contains(HOST_AZURE))" />
     <ProjectReference Include="..\Notes.Db\Notes.Db.csproj" />
   </ItemGroup>
 
