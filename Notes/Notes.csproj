@@ -26,7 +26,7 @@
     <PackageReference Include="Threax.AspNetCore.Mvc.CacheUi" Version="3.0.2" />
     <PackageReference Include="Threax.AspNetCore.Tracking" Version="2.0.4" />
     <PackageReference Include="Threax.AspNetCore.Validators" Version="2.0.2" />
-    <PackageReference Include="Threax.AspNetCore.IdServerAuth" Version="8.1.0" />
+    <PackageReference Include="Threax.AspNetCore.IdServerAuth" Version="9.0.0" />
     <PackageReference Include="Threax.AspNetCore.UrlFix" Version="1.1.5" />
     <PackageReference Include="Threax.AspNetCore.UserBuilder" Version="5.0.0" />
     <PackageReference Include="Threax.AspNetCore.UserBuilder.Entities" Version="6.0.1" />
