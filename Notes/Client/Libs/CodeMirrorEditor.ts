@@ -1,6 +1,6 @@
-import * as controller from "hr.controller";
-import * as client from 'clientlibs.ServiceClient';
-import { TimedTrigger } from 'hr.timedtrigger';
+import * as controller from 'htmlrapier/src/controller';
+import * as client from 'Client/Libs/ServiceClient';
+import { TimedTrigger } from 'htmlrapier/src/timedtrigger';
 
 declare function CodeMirror(element, config);
 

@@ -1,13 +1,13 @@
-import * as standardCrudPage from 'hr.widgets.StandardCrudPage';
-import * as startup from 'clientlibs.startup';
-//import * as deepLink from 'hr.deeplink';
-import { NoteCrudInjector } from 'clientlibs.NoteCrudInjector';
-import * as codemirroreditor from 'clientlibs.CodeMirrorEditor';
-import * as crudpage from 'hr.widgets.CrudPage';
+import * as standardCrudPage from 'htmlrapier.widgets/src/StandardCrudPage';
+import * as startup from 'Client/Libs/startup';
+//import * as deepLink from 'htmlrapier.deeplink';
+import { NoteCrudInjector } from 'Client/Libs/NoteCrudInjector';
+import * as codemirroreditor from 'Client/Libs/CodeMirrorEditor';
+import * as crudpage from 'htmlrapier.widgets/src/CrudPage';
 
-import * as controller from "hr.controller";
-import * as client from 'clientlibs.ServiceClient';
-import * as events from 'hr.eventdispatcher';
+import * as controller from 'htmlrapier/src/controller';
+import * as client from 'Client/Libs/ServiceClient';
+import * as events from 'htmlrapier/src/eventdispatcher';
 
 class RowExt extends crudpage.CrudTableRowControllerExtensions {
     public static get InjectorArgs(): controller.DiFunction<any>[] {
