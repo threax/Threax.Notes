@@ -8,7 +8,7 @@
     "htmlrapier": "^25.0.0",
     "htmlrapier.accesstoken": "^2.0.0",
     "htmlrapier.bootstrap": "^9.0.0",
-    "htmlrapier.bootstrap.datetime": "^5.0.0",
+    "htmlrapier.bootstrap.datetime": "^5.1.0",
     "htmlrapier.form.bootstrap4": "^4.0.0",
     "htmlrapier.halcyon": "^10.0.0",
     "htmlrapier.halcyon-explorer": "^9.0.0",
