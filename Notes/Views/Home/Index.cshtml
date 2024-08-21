@@ -12,11 +12,11 @@
                 <ul class="list-group" data-hr-view="listing">
                     <template>
                         <div class="container">
-                            <div class="row">
-                                <a data-hr-on-click="editOnPage" href="#" class="list-group-item list-group-item-action active col-9">
+                            <div class="row mb-1">
+                                <a data-hr-on-click="editOnPage" href="#" class="list-group-item active col-9">
                                     <div data-hr-view="firstLineView">{{{this}}}</div>
                                 </a>
-                                <button data-hr-on-click="del" class="btn btn-default col-3" data-hr-toggle="del" data-hr-style-off="display:none;">Delete</button>
+                                <button type="button" data-hr-on-click="del" class="btn btn-default col-3" data-hr-toggle="del" data-hr-style-off="display:none;">Delete</button>
                             </div>
                         </div>
                     </template>
