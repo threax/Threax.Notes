@@ -35,7 +35,6 @@
       {
         "input": [
           "wwwroot/lib/bootstrap/dist/css/threax.bootstrap.css",
-          "wwwroot/lib/htmlrapier.bootstrap.datetime/css/bootstrap-datetimepicker.css",
           "wwwroot/lib/codemirror/lib/codemirror.css",
           "wwwroot/lib/codemirror/theme/threax-notes.css"
         ],
@@ -49,7 +48,6 @@
     "bundle": [
       {
         "input": [
-          "wwwroot/lib/jquery/dist/jquery.min.js",
           "wwwroot/lib/@popperjs/core/dist/umd/popper.min.js",
           "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
           "wwwroot/lib/moment/min/moment.min.js",
