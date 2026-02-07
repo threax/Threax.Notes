@@ -222,7 +222,7 @@ namespace Notes
             //Clear the known networks to get proxy working again in less secure manner
             forwardOptions.KnownIPNetworks.Clear();
             forwardOptions.KnownProxies.Clear();
-            app.UseForwardedHeaders();
+            app.UseForwardedHeaders(forwardOptions);
 
             app.UseUrlFix(o =>
             {
