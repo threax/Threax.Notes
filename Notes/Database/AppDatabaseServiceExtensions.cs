@@ -30,6 +30,9 @@ namespace Notes.Database
             services.AddAuthorizationDatabase<AppDbContext>()
                     .AddDbContextPool<AppDbContext>(o =>
                     {
+                        //This warning is suppressed to fix ef migration errors. These migrations are dynamicly chosen, so this is a false positive.
+                        //https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-9.0/breaking-changes#pending-model-changes
+                        o.ConfigureWarnings(w => w.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning));
                         o.UseConnectedDb(connectionString);
                     });
 
