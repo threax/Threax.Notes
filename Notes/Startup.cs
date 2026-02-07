@@ -212,13 +212,17 @@ namespace Notes
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            var forwardOptions = new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedProto
                 //Can add ForwardedHeaders.XForwardedFor later, but tricky with container proxy since we don't know its ip
                 //This is enough to get https detection working again, however.
                 //https://github.com/aspnet/Docs/issues/2384
-            });
+            };
+            //Clear the known networks to get proxy working again in less secure manner
+            forwardOptions.KnownIPNetworks.Clear();
+            forwardOptions.KnownProxies.Clear();
+            app.UseForwardedHeaders();
 
             app.UseUrlFix(o =>
             {
