@@ -127,7 +127,7 @@ namespace Notes
             });
 
             // Add framework services.
-            services.AddMvc(o =>
+            var mvcBuilder = services.AddMvc(o =>
             {
                 o.UseExceptionErrorFilters();
                 o.UseConventionalHalcyon(halOptions);
@@ -137,7 +137,6 @@ namespace Notes
                 o.SerializerSettings.SetToHalcyonDefault();
                 o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             })
-            .AddRazorRuntimeCompilation()
             .AddConventionalIdServerMvc()
             .AddThreaxUserLookup(o =>
             {
@@ -147,6 +146,11 @@ namespace Notes
             {
                 o.CacheControlHeader = appConfig.CacheControlHeaderString;
             });
+
+            if (appConfig.UseRazorRuntimeCompilation)
+            {
+                mvcBuilder.AddRazorRuntimeCompilation();
+            }
 
             services.ConfigureHtmlRapierTagHelpers(o =>
             {

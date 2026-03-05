@@ -97,5 +97,7 @@ namespace Notes
         /// Set the app db schema name.
         /// </summary>
         public string DbSchema { get; set; } = "dbo";
+
+        public bool UseRazorRuntimeCompilation { get; set; }
     }
 }
