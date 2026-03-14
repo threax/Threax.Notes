@@ -78,8 +78,6 @@ namespace Notes
 
             ApiExplorerController.Allow = appConfig.AllowApiExplorer;
 
-            services.AddTimeTracking();
-
             services.AddHalClientGen(new HalClientGenOptions()
             {
                 SourceAssemblies = new Assembly[] { this.GetType().GetTypeInfo().Assembly, typeof(UserSearchController).Assembly },

@@ -1,10 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using Threax.AspNetCore.Tracking;
 
 namespace Notes.Database
 {
-    public partial class NoteEntity : ICreatedModified
+    public partial class NoteEntity
     {
         [Key]
         public Guid NoteId { get; set; }

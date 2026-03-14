@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
-using Threax.AspNetCore.Models;
-using Threax.AspNetCore.Tracking;
-using Notes.InputModels;
 using Notes.Database;
+using Notes.InputModels;
 using Notes.ViewModels;
+using System;
 using System.Linq;
 
 namespace Notes.Mappers
@@ -15,7 +10,12 @@ namespace Notes.Mappers
     {
         public NoteEntity MapNote(NoteInput src, NoteEntity dest)
         {
-            return mapper.Map(src, dest);
+            dest.FirstLine = ExtractFirstLine(src.Text);
+            dest.Text = src.Text;
+            dest.Created = GetCreated(dest.Created);
+            dest.Modified = DateTime.UtcNow;
+            
+            return dest;
         }
 
         public IQueryable<NoteListing> MapNote(IQueryable<NoteEntity> src)
@@ -31,44 +31,25 @@ namespace Notes.Mappers
 
         public Note MapNote(NoteEntity src, Note dest)
         {
-            return mapper.Map(src, dest);
-        }
-    }
+            dest.NoteId = src.NoteId;
+            dest.Text = src.Text;
+            dest.Created = src.Created;
+            dest.Modified = src.Modified;
 
-    public partial class NoteProfile : Profile
-    {
-        public NoteProfile()
+            return dest;
+        }
+
+        private string ExtractFirstLine(string text)
         {
-            //Map the input model to the entity
-            MapInputToEntity(CreateMap<NoteInput, NoteEntity>()
-                .ForMember(i => i.FirstLine, o => o.MapFrom((i, e) =>
+            if (text != null)
+            {
+                var firstLineIndex = text.IndexOf('\n');
+                if (firstLineIndex != -1)
                 {
-                    if (i.Text != null)
-                    {
-                        var firstLineIndex = i.Text.IndexOf('\n');
-                        if (firstLineIndex != -1)
-                        {
-                            return i.Text.Substring(0, firstLineIndex);
-                        }
-                    }
-                    return i.Text;
-                }))
-            );
-
-            //Map the entity to the view model.
-            MapEntityToView(CreateMap<NoteEntity, Note>());
-        }
-
-        void MapInputToEntity(IMappingExpression<NoteInput, NoteEntity> mapExpr)
-        {
-            mapExpr.ForMember(d => d.NoteId, opt => opt.Ignore())
-                .ForMember(d => d.Created, opt => opt.MapFrom<ICreatedResolver>())
-                .ForMember(d => d.Modified, opt => opt.MapFrom<IModifiedResolver>());
-        }
-
-        void MapEntityToView(IMappingExpression<NoteEntity, Note> mapExpr)
-        {
-            
+                    return text.Substring(0, firstLineIndex);
+                }
+            }
+            return text;
         }
     }
 }

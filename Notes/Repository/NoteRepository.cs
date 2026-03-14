@@ -1,12 +1,9 @@
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Notes.Database;
 using Notes.InputModels;
-using Notes.ViewModels;
-using Notes.Models;
 using Notes.Mappers;
+using Notes.ViewModels;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

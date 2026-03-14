@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using Halcyon.HAL.Attributes;
+using Notes.Controllers.Api;
+using Notes.Models;
+using System;
 using Threax.AspNetCore.Halcyon.Ext;
 using Threax.AspNetCore.Models;
-using Threax.AspNetCore.Tracking;
-using Notes.Models;
-using Notes.Controllers.Api;
-using Threax.AspNetCore.Halcyon.Ext.ValueProviders;
 
 namespace Notes.ViewModels 
 {
@@ -18,7 +12,7 @@ namespace Notes.ViewModels
     [HalSelfActionLink(typeof(NotesController), nameof(NotesController.Get))]
     [HalActionLink(typeof(NotesController), nameof(NotesController.Update))]
     [HalActionLink(typeof(NotesController), nameof(NotesController.Delete))]
-    public partial class NoteListing : INoteId, ICreatedModified
+    public partial class NoteListing : INoteId
     {
         public Guid NoteId { get; set; }
 
